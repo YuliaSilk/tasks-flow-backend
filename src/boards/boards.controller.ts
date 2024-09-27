@@ -26,7 +26,7 @@ export class BoardsController {
     return this.boardsService.findBoardById(id);
   }
 
-  @Post(':id/columns/:columnTitle/tasks')
+  @Post(':id/columns/:columnid/tasks')
   addTask(
     @Param('id') id: string,
     @Param('columnTitle') columnTitle: string,

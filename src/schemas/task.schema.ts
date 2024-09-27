@@ -1,5 +1,7 @@
+// src/boards/schemas/task.schema.ts
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Types } from 'mongoose';
+import { Document } from 'mongoose';
+import mongoose from 'mongoose';
 
 @Schema()
 export class Task extends Document {
@@ -9,8 +11,11 @@ export class Task extends Document {
   @Prop()
   description: string;
 
-  @Prop({ type: Types.ObjectId, ref: 'Column', required: true })
-  columnID: Types.ObjectId;
+  @Prop()
+  priority: string;
+
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Column' })
+  columnID: mongoose.Types.ObjectId;
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);
